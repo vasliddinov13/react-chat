@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import "./login.css";
+import { toast } from 'react-toastify';
 
 const Login = () => {
 
@@ -15,13 +16,18 @@ const Login = () => {
         url: URL.createObjectURL(e.target.files[0])
       });
     }
-  }
+  };
+
+  const handleSubmit = e =>{
+    e.preventDefault();
+    toast.warn("hello");
+  };
 
   return (
     <div className='login'>
       <div className="item">
         <h2>Welcome back, </h2>
-        <form>
+        <form onSubmit={handleSubmit}>
           <input type="text" placeholder='Email' name='email' />
           <input type="password" placeholder='Password' name='password' />
           <button>Sign In</button>
